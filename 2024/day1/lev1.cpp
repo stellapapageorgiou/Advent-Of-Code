@@ -2,30 +2,34 @@
 using namespace std;     // to avoid writing std:: before EVERY stl method or data structure we use
 
 
-// Main function, exactly like in C
+// Main function
 int main() {
 	
+    // vectors in order to put the numbers of the two columns 
     vector<int> vecA;
     vector<int> vecB;
 
-    for(int i = 0; i < 1000; i++) {
+    // reads input with cin and pushes to corresponding vectors
+    while(!cin.eof()) {
         int a, b;
-        cin >> a;
-        cin >> b;
+        cin >> a >> b;
         vecA.push_back(a);
         vecB.push_back(b);
     }
 
+    // sorts vectors
     sort(vecA.begin(), vecA.end());
     sort(vecB.begin(), vecB.end());
 
-    int totalDist = 0;
+    int totalDist = 0;  // variable that stores the answer      
+
+    // finds the distance between the two elements in the same positions
+    // since the arrays are sorted the numbers are paired correctly
     for(int i = 0; i < vecA.size(); i++) {
-        int dist = abs(vecA[i]- vecB[i]);
-        totalDist += dist;
+        totalDist += abs(vecA[i]- vecB[i]);
     }
 
-    cout << totalDist << "\n";
+    cout << totalDist << "\n";  // prints answer
 
 	return 0;
 }
